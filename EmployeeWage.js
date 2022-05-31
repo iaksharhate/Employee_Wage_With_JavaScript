@@ -39,5 +39,5 @@ while (totalWorkingDays < MAX_DAYS_IN_MONTH && totalWorkingHours < MAX_HRS_IN_MO
     totalWorkingHours = totalWorkingHours + empHours;
     empDailyWageArray.push(calculateDailyWage(empHours))  //Storing daily wage in array.
 }
-let empWage = totalWorkingHours * WAGE_PER_HOUR;
+let empWage = calculateDailyWage(totalWorkingHours);
 console.log("Total Days: "+totalWorkingDays +" Total Hours: "+totalWorkingHours+ " Employee wage: "+ empWage);
