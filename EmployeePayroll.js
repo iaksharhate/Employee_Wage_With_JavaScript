@@ -1,6 +1,5 @@
 class EmployeePayrollData{
     id;
-    name;
     salary;
     gender;
     startDate;
@@ -13,47 +12,16 @@ class EmployeePayrollData{
         this.startDate = params[4];
     }
 
-    get id(){
-        return this._id;
-    }
-
-    set id(id){
-        this._id = id;
-    }
-
     get name(){
         return this._name;
     }
 
     set name(name){
-        this._name = name;
+        let nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
+        if(nameRegex.test(name))
+            this._name = name;
+        else throw 'Name is incorrect!'
     }
-
-    get salary(){
-        return this._salary;
-    }
-
-    set salary(salary){
-        this._salary = salary;
-    }
-
-    get gender(){
-        return this.gender;
-    }
-
-    set gender(gender){
-        this._gender = gender;
-    }
-
-    get startDate(){
-        return this.startDate;
-    }
-
-    set startDate(startDate){
-        this._startDate = startDate;
-    }
-
-
 
     toString(){
         const options = {year: 'numeric', month: 'long', day: 'numeric'};
@@ -66,8 +34,12 @@ class EmployeePayrollData{
 
 let employeePayrollData = new EmployeePayrollData(1, "Mark", 30000);
 console.log(employeePayrollData.toString());
-employeePayrollData.name = "John"
-console.log(employeePayrollData.toString());
+try {
+    employeePayrollData.name = "akshar";
+    console.log(employeePayrollData.toString());
+} catch (error ) {
+    console.error(error);
+}
 console.log("\n*****************************************************************************");
 let newEmployeePayrollData = new EmployeePayrollData(1, "Terissa", 40000, "F", new Date());
 console.log(newEmployeePayrollData.toString());
